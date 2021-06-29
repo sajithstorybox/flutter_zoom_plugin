@@ -55,9 +55,9 @@ class _ZoomViewState extends State<ZoomView> {
 class ZoomViewController {
   ZoomViewController._(int id)
       : _methodChannel =
-            new MethodChannel('com.decodedhealth/flutter_zoom_plugin'),
+  new MethodChannel('com.decodedhealth/flutter_zoom_plugin'),
         _zoomStatusEventChannel =
-            new EventChannel("com.decodedhealth/zoom_event_stream");
+        new EventChannel("com.decodedhealth/zoom_event_stream");
 
   final MethodChannel _methodChannel;
   final EventChannel _zoomStatusEventChannel;
@@ -88,6 +88,7 @@ class ZoomViewController {
     optionMap.putIfAbsent("disableShare", () => options.disableShare);
     optionMap.putIfAbsent("noDisconnectAudio", () => options.noDisconnectAudio);
     optionMap.putIfAbsent("noAudio", () => options.noAudio);
+    optionMap.putIfAbsent("noTitleBar", () => options.noTitleBar);
 
     return _methodChannel.invokeMethod('start', optionMap);
   }
@@ -104,6 +105,7 @@ class ZoomViewController {
     optionMap.putIfAbsent("disableShare", () => options.disableShare);
     optionMap.putIfAbsent("noDisconnectAudio", () => options.noDisconnectAudio);
     optionMap.putIfAbsent("noAudio", () => options.noAudio);
+    optionMap.putIfAbsent("noTitleBar", () => options.noTitleBar);
 
     return _methodChannel.invokeMethod('join', optionMap);
   }
