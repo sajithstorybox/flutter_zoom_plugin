@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
+import com.zipow.videobox.sdk.MeetingViewsOptions;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -127,7 +129,6 @@ public class ZoomView implements PlatformView,
         }
 
         final MeetingService meetingService = zoomSDK.getMeetingService();
-
         JoinMeetingOptions opts = new JoinMeetingOptions();
         opts.no_invite = parseBoolean(options, "disableInvite", false);
         opts.no_share = parseBoolean(options, "disableShare", false);
@@ -135,7 +136,9 @@ public class ZoomView implements PlatformView,
         opts.no_dial_in_via_phone = parseBoolean(options, "disableDialIn", false);
         opts.no_disconnect_audio = parseBoolean(options, "noDisconnectAudio", false);
         opts.no_audio = parseBoolean(options, "noAudio", false);
-        opts.no_titlebar = parseBoolean(options, "noTitleBar", false);
+        opts.no_titlebar = false;
+        opts.meeting_views_options = MeetingViewsOptions.NO_TEXT_MEETING_ID;
+        opts.meeting_views_options = MeetingViewsOptions.NO_TEXT_PASSWORD;
 
         JoinMeetingParams params = new JoinMeetingParams();
 
